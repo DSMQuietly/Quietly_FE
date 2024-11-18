@@ -1,26 +1,21 @@
 import styled from 'styled-components';
 import { Inputs } from '../components/user/Inputs';
-import { useState } from 'react';
 import { theme } from '../theme';
 import { Button } from '../components/Button';
 
 export const Login = () => {
-  const [isType, setIsType] = useState<boolean>(false);
-
   return (
     <ModalContainer>
       <LoginModal>
         <Title>로그인</Title>
         <InputsContainer>
           <Inputs
-            setIsType={false}
-            isType={isType}
+            isType={false}
             placeholder="이메일을 입력하세요"
             label="이메일"
           />
           <Inputs
-            setIsType={true}
-            isType={isType}
+            isType={true}
             placeholder="비밀번호를 입력하세요"
             label="비밀번호"
           />

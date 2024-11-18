@@ -7,11 +7,10 @@ import openEyes from '../../assets/openEyes.svg';
 interface isInput {
   placeholder: string;
   isType: boolean;
-  setIsType: (value: boolean) => void;
   label: string;
 }
 
-export const Inputs = ({ placeholder, isType, setIsType, label }: isInput) => {
+export const Inputs = ({ placeholder, isType, label }: isInput) => {
   const [isPassword, setIsPassword] = useState<boolean>(false);
 
   const inputClick = () => {
@@ -26,10 +25,12 @@ export const Inputs = ({ placeholder, isType, setIsType, label }: isInput) => {
           type={isPassword ? 'password' : 'text'}
           placeholder={placeholder}
         />
-        {isPassword ? (
-          <ImgContainer src={closeEyes} alt="close" onClick={inputClick} />
-        ) : (
-          <ImgContainer src={openEyes} alt="open" onClick={inputClick} />
+        {isType && (
+          <ImgContainer
+            src={isPassword ? closeEyes : openEyes}
+            alt="close"
+            onClick={inputClick}
+          />
         )}
       </InputFakeContainer>
     </InputAllContainer>

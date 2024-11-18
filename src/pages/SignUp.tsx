@@ -2,19 +2,15 @@ import styled from 'styled-components';
 import { theme } from '../theme';
 import { Inputs } from '../components/user/Inputs';
 import { Button } from '../components/Button';
-import { useState } from 'react';
 
 export const SignUp = () => {
-  const [isType, setIsType] = useState<boolean>(false);
-
   return (
     <SignUpContainer>
       <Title>회원가입</Title>
       <InputsContainer>
         <BtnInputContainer>
           <Inputs
-            setIsType={false}
-            isType={isType}
+            isType={false}
             placeholder="이메일을 입력하세요"
             label="이메일"
           />
@@ -22,29 +18,25 @@ export const SignUp = () => {
         </BtnInputContainer>
         <BtnInputContainer>
           <Inputs
-            setIsType={false}
-            isType={isType}
+            isType={false}
             placeholder="인증코드를 입력하세요"
             label="인증코드"
           />
           <Btn>Check</Btn>
         </BtnInputContainer>
         <Inputs
-          setIsType={true}
-          isType={isType}
+          isType={false}
           placeholder="닉네임을 입력하세요"
           label="닉네임"
         />
 
         <Inputs
-          setIsType={true}
-          isType={isType}
+          isType={true}
           placeholder="비밀번호를 입력하세요"
           label="비밀번호"
         />
         <Inputs
-          setIsType={true}
-          isType={isType}
+          isType={true}
           placeholder="비밀번호를 다시 입력하세요"
           label="비밀번호 확인"
         />
@@ -84,7 +76,7 @@ const Btn = styled.button`
     border: none;
   }
   color: ${theme.color.white};
-  font-weight: 700;
+  font-weight: 400;
   font-size: 12px;
   display: flex;
   justify-content: center;

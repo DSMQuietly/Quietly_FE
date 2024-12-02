@@ -4,6 +4,8 @@ import { PostContents } from '../components/postview/PostContents';
 import { Header } from '../components/public/Header';
 import { KeyWordBtn } from '../components/public/KeyWordBtn';
 import { PublicBtn } from '../components/public/PublicBtn';
+import { Comment } from '../components/postview/Comment';
+import { theme } from '../theme';
 
 export const PostView = () => {
   return (
@@ -12,6 +14,10 @@ export const PostView = () => {
         <Header />
         <PostContentsContainer>
           <ContentsContainer>
+            <TitleContainer>
+              <Title>친구랑 싸웠어요ㅠㅠ</Title>
+              <TitleLine />
+            </TitleContainer>
             <KeyWordBtn children="친구" />
             <PostContents
               children="요즘 들어 친구랑 자꾸 부딪히게 돼서 정말 힘들어요. 사실, 이렇게 싸울 일이 아니었는데도 서로 조금씩 오해가 쌓이고, 결국 큰 싸움으로 번지고 말았어요. 그때 당시에는 내 감정이 너무 복잡해서 차라리 싸우는 게 낫다고 생각했어요. 아무리 생각해도 내 마음속에서 내가 느끼는 불편함이나 불안함이 확실히 있었고, 그게 화로 표현되었죠. 그 순간엔 내가 무슨 말을 했는지도 잘 모르겠어요. 그냥 그때 그 상황에서 내 감정을 전하고 싶었을 뿐인데, 그 말들이 친구에게 상처가 됐다는 걸 나중에 알게 됐어요.
@@ -31,11 +37,28 @@ export const PostView = () => {
             <CommentContainer />
             <PublicBtn children="댓글작성" />
           </CommentContents>
+          <CommentAll>
+            <Comment />
+            <Comment />
+            <Comment />
+            <Comment />
+          </CommentAll>
         </PostContentsContainer>
       </>
     </>
   );
 };
+
+const Title = styled.div`
+  font-size: 18px;
+  font-weight: 700;
+`;
+
+const CommentAll = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+`;
 
 const CommentContents = styled.div`
   gap: 44px;
@@ -45,11 +68,12 @@ const CommentContents = styled.div`
 `;
 
 const ContentsContainer = styled.div`
+  margin-top: 90px;
   display: flex;
   flex-direction: column;
   align-items: start;
   justify-content: center;
-  gap: 25px;
+  gap: 35px;
 `;
 
 const PostContentsContainer = styled.div`
@@ -57,5 +81,20 @@ const PostContentsContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-bottom: 90px;
   gap: 100px;
+`;
+
+const TitleLine = styled.line`
+  width: 500px;
+  height: 1px;
+  border: none;
+  background-color: ${theme.color.gray[2]};
+`;
+
+const TitleContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: start;
 `;

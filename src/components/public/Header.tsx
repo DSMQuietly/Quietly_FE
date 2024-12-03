@@ -1,21 +1,98 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { theme } from '../../theme';
 import Logo from '../../assets/Logo.svg';
+import { useState } from 'react';
+import { Login } from '../../pages';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 export const Header = () => {
+  const [isLogin, setIsLogin] = useState<boolean>(false);
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
+
+  const mypageNavClick = () => {
+    navigate('/mypage');
+  };
+
+  const postNavClick = () => {
+    navigate('/postcheck');
+  };
+
+  const logoClick = () => {
+    navigate('/postcheck');
+    window.location.reload();
+  };
+
+  const loginOpenClick = () => {
+    setIsLogin(true);
+  };
+
+  const loginCloseClick = () => {
+    setIsLogin(false);
+  };
+
   return (
     <>
       <HeaderContainer>
-        <LogoImg src={Logo} alt="logo" />
+        <LogoImg src={Logo} alt="logo" onClick={logoClick} />
         <NavContainer>
-          <NavContent>고민페이지</NavContent>
-          <NavContent>마이페이지</NavContent>
-          <LogBtn>로그인</LogBtn>
+          <PostNav pathname={pathname} onClick={postNavClick}>
+            고민페이지
+          </PostNav>
+          <MypageNav pathname={pathname} onClick={mypageNavClick}>
+            마이페이지
+          </MypageNav>
+          <LogBtn onClick={loginOpenClick}>로그인</LogBtn>
         </NavContainer>
       </HeaderContainer>
+      {isLogin && (
+        <ModalContainer>
+          <Login loginProp={loginCloseClick} />
+        </ModalContainer>
+      )}
     </>
   );
 };
+const PostNav = styled.div<{ pathname?: string }>`
+  font-size: 16px;
+
+  cursor: pointer;
+  ${({ pathname = '' }) => {
+    return pathname.includes('post')
+      ? css`
+          color: ${theme.color.main[3]};
+          font-weight: 700;
+        `
+      : css`
+          color: ${theme.color.gray[1]};
+          font-weight: 500;
+        `;
+  }};
+`;
+
+const MypageNav = styled.div<{ pathname?: string }>`
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  ${({ pathname = '' }) => {
+    return pathname.includes('mypage')
+      ? css`
+          color: ${theme.color.main[3]};
+          font-weight: 700;
+        `
+      : css`
+          color: ${theme.color.gray[1]};
+          font-weight: 500;
+        `;
+  }};
+`;
+
+const ModalContainer = styled.div`
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  position: fixed;
+`;
 
 const LogoImg = styled.img`
   cursor: pointer;
@@ -36,12 +113,6 @@ const NavContainer = styled.div`
   display: flex;
   gap: 60px;
   align-items: center;
-  cursor: pointer;
-`;
-
-const NavContent = styled.div`
-  font-size: 16px;
-  font-weight: 500;
 `;
 
 const LogBtn = styled.button`

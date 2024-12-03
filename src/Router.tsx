@@ -1,4 +1,12 @@
-import { Login, PostCheck, PostView, SignUp, Writing, Mypage } from './pages';
+import {
+  Login,
+  PostCheck,
+  PostView,
+  SignUp,
+  Writing,
+  Mypage,
+  MainPage,
+} from './pages';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 export const Router = () => {
@@ -11,6 +19,7 @@ export const Router = () => {
         <Route path="/postcheck" element={<PostCheck />} />
         <Route path="/postview" element={<PostView />} />
         <Route path="/mypage" element={<Mypage />} />
+        <Route path="/" element={<MainPage />} />
       </Routes>
     </BrowserRouter>
   );

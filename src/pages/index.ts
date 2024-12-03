@@ -4,3 +4,4 @@ export * from './Writing';
 export * from './PostCheck';
 export * from './PostView';
 export * from './Mypage';
+export * from './MainPage';

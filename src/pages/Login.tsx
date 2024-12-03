@@ -3,9 +3,19 @@ import { Inputs } from '../components/user/Inputs';
 import { theme } from '../theme';
 import { Button } from '../components/Button';
 
-export const Login = () => {
+interface isLogin {
+  loginProp: () => void;
+}
+
+export const Login = ({ loginProp }: isLogin) => {
+  const backClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (e.target === e.currentTarget) {
+      loginProp();
+    }
+  };
+
   return (
-    <ModalContainer>
+    <ModalContainer onClick={backClick}>
       <LoginModal>
         <Title>로그인</Title>
         <InputsContainer>
@@ -20,11 +30,28 @@ export const Login = () => {
             label="비밀번호"
           />
         </InputsContainer>
-        <Button children="로그인" />
+        <BtnContainer>
+          <Button children="로그인" />
+          <SignUpBtn>회원가입</SignUpBtn>
+        </BtnContainer>
       </LoginModal>
     </ModalContainer>
   );
 };
+
+const BtnContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+`;
+
+const SignUpBtn = styled.div`
+  cursor: pointer;
+  font-size: 12px;
+  color: ${theme.color.gray[2]};
+  font-weight: 400;
+`;
 
 const ModalContainer = styled.div`
   width: 100vw;
@@ -51,7 +78,7 @@ const InputsContainer = styled.div`
 const LoginModal = styled.div`
   background-color: ${theme.color.white};
   width: 478px;
-  height: 490px;
+  height: 510px;
   border-radius: 20px;
   display: flex;
   flex-direction: column;

@@ -2,13 +2,14 @@ import styled from 'styled-components';
 import { theme } from '../../theme';
 
 interface isButton {
-  children: string;
+  children?: string;
+  onClick?: () => void;
 }
 
-export const PublicBtn = ({ children }: isButton) => {
+export const PublicBtn = ({ children, onClick }: isButton) => {
   return (
     <>
-      <Btn onClick={onclick}>{children}</Btn>
+      <Btn onClick={onClick}>{children}</Btn>
     </>
   );
 };

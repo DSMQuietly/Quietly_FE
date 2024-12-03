@@ -1,10 +1,17 @@
 import styled from 'styled-components';
 import { theme } from '../../theme';
 import { KeyWordBtn } from './KeyWordBtn';
+import { useNavigate } from 'react-router-dom';
 
 export const PostContainer = () => {
+  const navigate = useNavigate();
+
+  const postClick = () => {
+    navigate('/postview');
+  };
+
   return (
-    <Container>
+    <Container onClick={postClick}>
       <ContentContainer>
         <KeyWordBtn children="친구" />
         <Title>친구랑 싸웠어요ㅠㅠ</Title>

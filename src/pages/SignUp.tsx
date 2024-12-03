@@ -2,8 +2,15 @@ import styled from 'styled-components';
 import { theme } from '../theme';
 import { Inputs } from '../components/user/Inputs';
 import { Button } from '../components/Button';
+import { useNavigate } from 'react-router-dom';
 
 export const SignUp = () => {
+  const navigate = useNavigate();
+
+  const signupClick = () => {
+    navigate('/postcheck');
+  };
+
   return (
     <SignUpContainer>
       <Title>회원가입</Title>
@@ -41,7 +48,7 @@ export const SignUp = () => {
           label="비밀번호 확인"
         />
       </InputsContainer>
-      <Button children="회원가입" />
+      <Button children="회원가입" onClick={signupClick} />
     </SignUpContainer>
   );
 };

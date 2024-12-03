@@ -3,8 +3,15 @@ import { NavBar } from '../components/postCheck/NavBar';
 import { Header } from '../components/public/Header';
 import { PostContainer } from '../components/public/PostContainer';
 import { PublicBtn } from '../components/public/PublicBtn';
+import { useNavigate } from 'react-router-dom';
 
 export const PostCheck = () => {
+  const navigate = useNavigate();
+
+  const writeClick = () => {
+    navigate('/writing');
+  };
+
   return (
     <>
       <PostCheckContainer>
@@ -16,7 +23,7 @@ export const PostCheck = () => {
           <PostContainer />
         </PostAll>
         <BtnContainer>
-          <PublicBtn children="작성하기" />
+          <PublicBtn children="작성하기" onClick={writeClick} />
         </BtnContainer>
       </PostCheckContainer>
     </>

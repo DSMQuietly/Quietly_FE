@@ -3,8 +3,14 @@ import logo from '../assets/mainpage/logo.svg';
 import styled from 'styled-components';
 import { theme } from '../theme';
 import backgroundImg from '../assets/mainpage/backgroundImg.svg';
+import { useNavigate } from 'react-router-dom';
 
 export const MainPage = () => {
+  const navigate = useNavigate();
+
+  const startClick = () => {
+    navigate('/postcheck');
+  };
   return (
     <MainContainer>
       <Header />
@@ -18,7 +24,7 @@ export const MainPage = () => {
             </SubTitle>
           </SubTitleContainer>
         </TitleContainer>
-        <StartBtn>시작하기</StartBtn>
+        <StartBtn onClick={startClick}>시작하기</StartBtn>
       </ContentsContainer>
       <BackImg src={backgroundImg} alt="배경이미지" />
     </MainContainer>

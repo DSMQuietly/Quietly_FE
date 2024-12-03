@@ -5,9 +5,15 @@ import { TitleInput } from '../components/Inputs/TitleInput';
 import { Header } from '../components/public/Header';
 import { PublicBtn } from '../components/public/PublicBtn';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export const Writing = () => {
   const [isCheck, setIsCheck] = useState<string>('friend');
+  const navigate = useNavigate();
+
+  const postClick = () => {
+    navigate('/postview');
+  };
 
   const handleClick = (buttonValue: string) => {
     setIsCheck(buttonValue);
@@ -46,7 +52,7 @@ export const Writing = () => {
           ></CheckBtn>
         </BtnContainer>
         <ContentsInput />
-        <PublicBtn children="올리기"></PublicBtn>
+        <PublicBtn children="올리기" onClick={postClick}></PublicBtn>
       </Contents>
     </WritingContainer>
   );

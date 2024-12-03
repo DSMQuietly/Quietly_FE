@@ -2,16 +2,22 @@ import styled from 'styled-components';
 import { Inputs } from '../components/user/Inputs';
 import { theme } from '../theme';
 import { Button } from '../components/Button';
+import { useNavigate } from 'react-router-dom';
 
 interface isLogin {
   loginProp: () => void;
 }
 
 export const Login = ({ loginProp }: isLogin) => {
+  const navigate = useNavigate();
   const backClick = (e: React.MouseEvent<HTMLDivElement>) => {
     if (e.target === e.currentTarget) {
       loginProp();
     }
+  };
+
+  const signupClick = () => {
+    navigate('/signup');
   };
 
   return (
@@ -32,7 +38,7 @@ export const Login = ({ loginProp }: isLogin) => {
         </InputsContainer>
         <BtnContainer>
           <Button children="로그인" />
-          <SignUpBtn>회원가입</SignUpBtn>
+          <SignUpBtn onClick={signupClick}>회원가입</SignUpBtn>
         </BtnContainer>
       </LoginModal>
     </ModalContainer>
